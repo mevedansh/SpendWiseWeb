@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='dashboard-Copy.css')}}">
+    </head>
+    <body>
+        <div id="back"></div>
+        <div id="lineT"></div>
+        <div id="div1">
+            <img src="{{url_for('static',filename='spendwise logo.png')}}" id="logo">
+            <h2 id="dash">Dashboard</h2><img src="{{url_for('static',filename='Vector.png')}}" id="dashimg">
+            <a href="/create_trip"><h2 id="trip">Create Trip</h2><img src="{{url_for('static',filename='travel-icon 1.png')}}" id="tripimg"></a>
+            <a href="/personal_expense"><h2 id="per">Personal Expense</h2><img src="{{url_for('static',filename='Expense report 1.png')}}" id="perimg"></a>
+            <a href="/group_expense"><h2 id="grp">Group Expense</h2><img src="{{url_for('static',filename='travel-icon 1.png')}}" id="grpimg"></a>
+        </div>
+        <div id="blur"></div>
+        <div id="line1"></div>
+        <div id="line2"></div>
+        <div id="line3"></div>
+        <div id="line4"></div>
+        <div id="line5"></div>
+        <a href="profile - Copy.html"><img src="{{url_for('static',filename='profile.png')}}" id="proimg">
+        <h2 id="Uname">Amitesh Jadav</h2></a>
+        <a href="/login"><p id="lg">LogOut</p><img src="{{url_for('static',filename='logout.png')}}" id="lgimg"></a>
+        <div id="pop"><p id="head">Dashboard</p></div>
+        <a href="/about_spendwise"><p id="ab">About SpendWise</p></a>
+        <footer>
+            <img src="{{url_for('static',filename='spendwise logo.png')}}" id="footlogo">
+            <div class="footercontainer">
+                <div id="Us">
+                    <h2>Contact Us</h2>
+                        Email: spendwise2007@gamil.com<br><br>
+                        Phone Number: 9428182627<br><br>
+                        Support: Mon-Fri, 9AM - 6 pm
+                </div>
+                <div id="about">
+                    <h2>About SpendWise</h2>
+                        “SpendWise helps you track, manage,<br>
+                         and split expenses—effortlessly.”
+                </div>
+            </div>
+        </footer>
+        <h2 id="para">Welcome Back!</h2>
+        <p id="paraline"><b>Let’s make your money work for you!</b></p>
+        <main>
+        <div class="container">
+        <div class="card">
+            <h3>Total Income</h3>
+            <div><span class="amount" id="incomeDisplay">₹ 0</span><span class="percent" id="incomePercent">0%</span></div>
+            <input type="number" id="incomeInput" class="input-field" placeholder="Enter Total Income" />
+            <button class="update-btn green" onclick="updateValue('income')">Update</button>
+        </div>
+
+        <div class="card">
+            <h3>Total Expenses</h3>
+            <div><span class="amount" id="expensesDisplay">₹ 0</span><span class="percent" id="expensesPercent">0%</span></div>
+            <input type="number" id="expensesInput" class="input-field" placeholder="Enter Total Expenses" />
+            <button class="update-btn red" onclick="updateValue('expenses')">Update</button>
+        </div>
+
+        <div class="card">
+            <h3>Total Borrowing</h3>
+            <div><span class="amount" id="borrowingDisplay">₹ 0</span><span class="percent" id="borrowingPercent">0%</span></div>
+            <input type="number" id="borrowingInput" class="input-field" placeholder="Enter total borrowing" />
+            <button class="update-btn green" onclick="updateValue('borrowing')">Update</button>
+            </div>
+        </div>
+        </main>
+        <script>
+        // Load saved data on page load
+        window.onload = () => {
+            ['income', 'expenses', 'borrowing'].forEach(key => {
+            const savedValue = localStorage.getItem(key);
+            const savedPercent = localStorage.getItem(key + 'Percent');
+            if (savedValue) {
+                document.getElementById(`${key}Display`).innerText = '₹ ' + savedValue;
+                document.getElementById(`${key}Percent`).innerText = (savedPercent || '0%');
+            }
+            });
+        };
+
+        function updateValue(key) {
+            const input = document.getElementById(`${key}Input`);
+            const value = parseFloat(input.value);
+            if (!isNaN(value)) {
+            const oldValue = parseFloat(localStorage.getItem(key)) || 0;
+            const percentChange = oldValue === 0 ? 0 : (((value - oldValue) / oldValue) * 100).toFixed(1);
+            const sign = percentChange >= 0 ? '+' : '';
+            const percentText = `${sign}${percentChange}%`;
+
+            // Update display
+            document.getElementById(`${key}Display`).innerText = '₹ ' + value.toLocaleString('en-IN');
+            document.getElementById(`${key}Percent`).innerText = percentText;
+
+            // Save to localStorage
+            localStorage.setItem(key, value);
+            localStorage.setItem(key + 'Percent', percentText);
+
+            input.value = '';
+            }
+        }
+        </script>
+        <div class="designwrap">
+            <div id="design1">
+                <h3 id="perso">Go To,<br> Personal Expense</h3>
+                <p id="perline">Manage what you spend,<br>every day.</p>
+                <a href="/personal_expense"><button id="perbtn"><b>Go To</b></button></a>
+            </div>
+            <div id="design2"><h3 id="trpso">Go To,<br> Create Trip</h3>
+                <p id="trpline">Create a trip and manage group expenses easily.</p>
+                <a href="/create_trip"><button id="trpbtn"><b>Go To</b></button></a></div>
+            <div id="design3"><h3 id="grpso">Go To,<br> Group Expense</h3>
+                <p id="grpline">Keep group spending <br>simple and transparent.</p>
+                <a href="/group_expense"><button id="grpbtn"><b>Go To</b></button></a></div>
+        </div>
+    </body>
+</html>

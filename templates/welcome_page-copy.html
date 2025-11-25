@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='welcome page - Copy.css')}}">
+        <title>SpenWise</title>
+    </head>
+    <body>
+        <img src="{{url_for('static',filename='travel 1.jpg')}}" id="pic">
+        <div id="blur"></div>
+        
+        <img src="{{url_for('static',filename='spendwise logo.png')}}" id="logo">
+        <div id="div1">Welcome to <br>SpendWise Website</div><br>
+        <p id="tag"><b><u>Track. Save. Share.</u></b></p>
+        <div id="div2">
+            Login to your Account and access your<br> Dashboard<br>
+            <a href="/login" target="_self"><input type="button" value="Login" id="button1"></a>
+        </div>
+        <img src="{{url_for('static',filename='travel pic 4-Photoroom.png')}}" id="loginPic">
+        <p id="Q">?</p>
+        <p id="line">"You’ve landed at<br>the perfect place!"</p>
+        <div id="div3">
+            Create your account to<br>
+            start managing expenses<br> 
+            the smart way.
+            <a href="/register" target="_self"><input type="button" value="Register" id="button2"></a>
+        </div>
+        <footer>
+            <img src="{{url_for('static',filename='spendwise logo.png')}}" id="footlogo">
+
+            <div class="footercontainer">
+                <div id="Us">
+                    <h2>Contact Us</h2>
+                        Email: spendwise2007@gamil.com<br><br>
+                        Phone Number: 9428182627<br><br>
+                        Support: Mon-Fri, 9AM - 6 pm
+                </div>
+                <div id="about">
+                    <h2>About SpendWise</h2>
+                        “SpendWise helps you track, manage,<br>
+                         and split expenses—effortlessly.”
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

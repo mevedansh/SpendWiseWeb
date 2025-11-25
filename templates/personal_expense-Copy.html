@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='personal_expense-Copy.css')}}">
+    </head>
+    <body>
+        <div id="back"></div>
+        <div id="lineT"></div>
+        <div id="div1">
+            <img src="{{url_for('static',filename='spendwise logo.png')}}" id="logo">
+            <a href="/dashboard"><h2 id="dash">Dashboard</h2><img src="{{url_for('static',filename='Vector.png')}}" id="dashimg"></a>
+            <a href="/create_trip"><h2 id="trip">Create Trip</h2><img src="{{url_for('static',filename='travel-icon 1.png')}}" id="tripimg"></a>
+            <h2 id="per">Personal Expense</h2><img src="{{url_for('static',filename='Expense report 1.png')}}" id="perimg">
+            <a href="/group_expense"><h2 id="grp">Group Expense</h2><img src="{{url_for('static',filename='travel-icon 1.png')}}" id="grpimg"></a>
+        </div>
+        <div id="blur"></div>
+        <div id="line1"></div>
+        <div id="line2"></div>
+        <div id="line3"></div>
+        <div id="line4"></div>
+        <div id="line5"></div>
+        <a href="/profile"><img src="{{url_for('static',filename='profile.png')}}" id="proimg">
+        <h2 id="Uname">Amitesh Jadav</h2></a>
+        <a href="/login"><p id="lg">LogOut</p><img src="{{url_for('static',filename='logout.png')}}" id="lgimg"></a>
+        <a href="/about_spendwise"><p id="ab">About SpendWise</p></a>
+        <div id="pop"><p id="head">Personal Expense</p></div>
+        <footer>
+            <img src="{{url_for('static',filename='spendwise logo.png')}}" id="footlogo">
+            <div class="footercontainer">
+                <div id="Us">
+                    <h2>Contact Us</h2>
+                        Email: spendwise2007@gamil.com<br><br>
+                        Phone Number: 9428182627<br><br>
+                        Support: Mon-Fri, 9AM - 6 pm
+                </div>
+                <div id="about">
+                    <h2>About SpendWise</h2>
+                        “SpendWise helps you track, manage,<br>
+                         and split expenses—effortlessly.”
+                </div>
+            </div>
+        </footer>
+    <main>
+  <div class="dashboard">
+    <div class="card">
+      <h3>Total Income</h3>
+      <input type="number" id="income" placeholder="₹ 0.00">
+    </div>
+    <div class="card">
+      <h3>Total Expenses</h3>
+      <input type="number" id="expenses" placeholder="₹ 0.00">
+    </div>
+    <div class="card">
+      <h3>Total Borrowing</h3>
+      <input type="number" id="borrowing" placeholder="₹ 0.00">
+    </div>
+    <div class="card">
+      <h3>Bank Loan</h3>
+      <input type="number" id="loan" placeholder="₹ 0.00">
+    </div>
+    <div class="card">
+      <h3>Home Expenses</h3>
+      <input type="number" id="home" placeholder="₹ 0.00">
+    </div>
+    <div class="card">
+      <h3>Other Expenses</h3>
+      <input type="number" id="other" placeholder="₹ 0.00">
+    </div>
+    <div class="card full-width">
+      <h3>Account in Bank</h3>
+      <input type="text" id="banks" placeholder="Enter Your Bank">
+    </div>
+  </div>
+
+  <center><button id="saveBtn">Save All Data</button></center>
+  </main>
+  <script>
+    const fields = ["income", "expenses", "borrowing", "loan", "home", "other", "banks"];
+
+    // Load saved values
+    window.onload = () => {
+      fields.forEach(field => {
+        document.getElementById(field).value = localStorage.getItem(field) || "";
+      });
+    };
+
+    // Save values
+    document.getElementById("saveBtn").onclick = () => {
+      fields.forEach(field => {
+        const value = document.getElementById(field).value;
+        localStorage.setItem(field, value);
+      });
+      alert("All data saved successfully!");
+    };
+  </script>
+    <div class="hedline"><b>"Manage everyday expenses with ease."</b></div>
+    </body>
+</html>

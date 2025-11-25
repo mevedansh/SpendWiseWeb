@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='create_trip-Copy.css')}}">
+        
+    </head>
+    <body>
+        <div id="back"></div>
+        <div id="lineT"></div>
+        <div id="div1">
+            <img src="{{url_for('static',filename='spendwise logo.png')}}" id="logo">
+            <a href="/dashboard"><h2 id="dash">Dashboard</h2><img src="{{url_for('static',filename='Vector.png')}}" id="dashimg"></a>
+            <h2 id="trip">Create Trip</h2><img src="{{url_for('static',filename='travel-icon 1.png')}}" id="tripimg">
+            <a href="/personal_expense"><h2 id="per">Personal Expense</h2><img src="{{url_for('static',filename='Expense report 1.png')}}" id="perimg"></a>
+            <a href="/group_expense"><h2 id="grp">Group Expense</h2><img src="{{url_for('static',filename='travel-icon 1.png')}}" id="grpimg"></a>
+        </div>
+        <div id="blur"></div>
+        <div id="line1"></div>
+        <div id="line2"></div>
+        <div id="line3"></div>
+        <div id="line4"></div>
+        <div id="line5"></div>
+        <a href="/profile"><img src="{{url_for('static',filename='profile.png')}}" id="proimg">
+        <h2 id="Uname">Amitesh Jadav</h2></a>
+        <a href="/login"><p id="lg">LogOut</p><img src="{{url_for('static',filename='logout.png')}}" id="lgimg"></a>
+        <a href="/about_spendwise"><p id="ab">About SpendWise</p></a>
+        <div id="div2"><b>“Create your trip plan here”</b></div>
+        <div id="pop"><p id="head">Create Trip</p></div>
+        <footer>
+            <img src="{{url_for('static',filename='spendwise logo.png')}}" id="footlogo">
+            <div class="footercontainer">
+                <div id="Us">
+                    <h2>Contact Us</h2>
+                        Email: spendwise2007@gamil.com<br><br>
+                        Phone Number: 9428182627<br><br>
+                        Support: Mon-Fri, 9AM - 6 pm
+                </div>
+                <div id="about">
+                    <h2>About SpendWise</h2>
+                        “SpendWise helps you track, manage,<br>
+                         and split expenses—effortlessly.”
+                </div>
+            </div>
+        </footer>
+        </div>
+
+  <main>
+    <div class="top-box">
+      <label for="peopleCount">Add number of people</label>
+      <select id="peopleCount" onchange="generateMembers()">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+      <span>👥</span>
+    </div>
+
+    <div id="members" class="members-container"></div>
+  </main>
+
+<main id="main1">
+    <div class="trip-box">
+      <label for="location">📍 Location of Trip</label>
+      <select id="location">
+        <option>Monaco</option>
+        <option>Goa</option>
+        <option>Paris</option>
+        <option>Japan</option>
+      </select>
+    </div>
+
+    <div class="trip-box">
+      <label for="tripDate">Trip Date</label>
+      <input type="date" id="tripDate" value="2025-05-10">
+    </div>
+
+    <div class="trip-box">
+      <label for="vehicle">Vehicle 🚗</label>
+      <select id="vehicle">
+        <option>Air Plane</option>
+        <option>Bus</option>
+        <option>Car</option>
+        <option>Train</option>
+      </select>
+    </div>
+</main>
+    <button class="save-btn2" onclick="saveAllInfo()">Save Trip Info</button>
+  <script>
+    function saveAllInfo() {
+      const location = document.getElementById("location").value;
+      const tripDate = document.getElementById("tripDate").value;
+      const vehicle  = document.getElementById("vehicle").value;
+
+      const inputs  = document.querySelectorAll('#members input');
+      const members = [];
+
+      inputs.forEach(input => {
+        const name = input.value.trim();
+        if (name) members.push(name);
+      });
+
+      if (members.length === 0) {
+        alert("Please enter at least one member name.");
+        return;
+      }
+
+      const fullData = {
+        location: location,
+        date: tripDate,
+        vehicle: vehicle,
+        members: members
+      };
+
+      localStorage.setItem("tripFullInfo", JSON.stringify(fullData));
+
+      const blob = new Blob([JSON.stringify(fullData, null, 2)], { type: "application/json" });
+      const url  = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "tripFullInfo.json";
+      a.click();
+      URL.revokeObjectURL(url);
+
+      alert("All trip info and members saved successfully!");
+      console.log("Full Trip Data:", fullData);
+    }
+
+    window.onload = function () {
+      const saved = JSON.parse(localStorage.getItem("tripFullInfo") || "{}");
+
+      if (saved.location) document.getElementById("location").value = saved.location;
+      if (saved.date)     document.getElementById("tripDate").value = saved.date;
+      if (saved.vehicle)  document.getElementById("vehicle").value = saved.vehicle;
+
+      if (saved.members && saved.members.length > 0) {
+        document.getElementById("peopleCount").value = saved.members.length;
+        generateMembers();
+        const inputs = document.querySelectorAll('#members input');
+        inputs.forEach((inp, i) => inp.value = saved.members[i] || "");
+      }
+    };
+
+      function generateMembers() {
+        const count = parseInt(document.getElementById("peopleCount").value);
+        const container = document.getElementById("members");
+        container.innerHTML = "";
+
+      for (let i = 1; i <= count; i++) {
+        const div = document.createElement("div");
+        div.className = "member-box";
+        div.innerHTML = `
+          <div>Name of member 👤</div>
+          <input type="text" name="member${i}" placeholder="Member ${i}">
+        `;
+        container.appendChild(div);
+      }
+    }
+  </script>
+
+    </body>
+</html>

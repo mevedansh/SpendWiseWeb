@@ -1,0 +1,177 @@
+body{
+    background: linear-gradient(#101010,#101010,#1f4357);
+    width: 675px;
+    height: 515px;
+}
+#logo{
+    width: 131px;
+    height: 105px;
+    padding-left: 1%;
+}
+#div1{
+    font-family: Agency FB;
+    color: white;
+    font-size: 45px;
+    position: relative;
+    bottom: 40px;
+    left: 240px;
+}
+#div2{
+    color: white;
+    font-family: Agency FB;
+    font-size: 22px;
+    position: relative;
+    bottom: 60px;
+    left:270px ;
+}
+#div3{
+    background-color: #F3E8FF;
+    font-family: Agency FB;
+    text-align: center;
+    position: relative;
+    bottom: 88px;
+    left: 95px;
+    height: 260px;
+    width: 250px;
+    border-radius: 22px;
+}
+#div3::after ,#div3::before{
+    content: '';
+    position: absolute;
+    top: 130px;
+    left: 125px;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient( #ff4545, #00ff99, #006aff, #ff0095,#ff4545);
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 0px;
+    border-radius: 22px;
+}
+#div3::before{
+    filter: blur(1.5rem);
+    opacity: 1;
+}
+#usern{
+    position: relative;
+    top: 30px;
+    font-size: 28px;
+}
+#username{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    position: relative;
+    top: 30px;
+    border-top: 3px;
+    border-left: 0px;
+    border-right: 0px;
+    font-size: 15px;
+    width: 190px;
+    background-color: #F3E8FF;
+    text-align: center;
+}
+#password{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    position: relative;
+    top: 30px;
+    border-top: 3px;
+    border-left: 0px;
+    border-right: 0px;
+    font-size: 15px;
+    width: 190px;
+    background-color: #F3E8FF;
+    text-align: center;
+}
+#pass{
+    position: relative;
+    top: 35px;
+    font-size: 28px;
+}
+#submit{
+    background-color: #f6d026;
+    width: 130px;
+    height: 40px;
+    position: relative;
+    top: -110px;
+    left: 150px;
+    color: black;
+    border-radius: 10px;
+    border-color: #312B10;
+    border-width: 3.8px;
+    font-size: 27px;
+    font-family:'Times New Roman', Times, serif;
+}
+#submit:hover{
+    color:rgb(90, 27, 2);
+    transform: scale(0.95);
+    transition-duration: 1s;
+}
+#div6{
+    text-align: right;
+    position: relative;
+    left: 395px;
+    bottom: 310px;
+    background-color: #F3E8FF;
+    height: 35px;
+    width: 210px;
+    border-radius: 8px;
+}
+#div6::after ,#div6::before{
+    content: '';
+    position: absolute;
+    top: 18px;
+    left: 104px;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient( #ff4545, #00ff99, #006aff, #ff0095,#ff4545);
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 0px;
+    border-radius: 8px;
+}
+#div6::before{
+    filter: blur(1.5rem);
+    opacity: 1;
+}
+#acc{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    position: relative;
+    font-size: 18px;
+    top: 1.4px;
+    right: 10px;
+}
+#button2{
+    background-color: #f6d026;
+    width: 100px;
+    height: 32px;
+    position: relative;
+    bottom: 20px;
+    right: 55px;
+    color: black;
+    border-radius: 7px;
+    border-color: #312B10;
+    border-width: 3.8px;
+    font-size: 20px;
+    font-family:'Times New Roman', Times, serif;
+}
+#button2:hover{
+    color: rgb(90, 27, 2);
+    transform: scale(0.95);
+    transition-duration: 1s;
+}
+#img{
+    border-radius: 10px;
+    height: 300px;
+    width: 340px;
+    position: absolute;
+    bottom: 90px;
+    left: 700px;
+}
+#message{
+    text-align: center;
+    color: #e70a0a;
+    font-size: 25px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;;
+    position: absolute;
+    left: 420px;
+    top: 180px;
+}

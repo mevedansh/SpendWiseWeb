@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='login - Copy.css')}}">
+    </head>
+    <body>
+        <img src="{{url_for('static',filename='spendwise logo.png')}}" id="logo">
+        <div id="div1">Welcome Back</div><br>
+        <div id="div2">login to your account</div><br>
+        <form id="loginForm">
+        <div id="div3">
+            <h2 id="usern">Email</h2><input type="text" id="username">
+            <h2 id="pass">Password</h2><input type="password" id="password">
+        </div>
+        <input type="submit" value="Login"  id="submit">
+        </form>
+        <div id="div6">
+            <h4 id="acc">Don’t have an account?</h4>
+            <a href="/register"><input type="button" value="Register"  id="button2"></a>
+        </div>
+        <img src="{{url_for('static',filename='login pic.jpg')}}" id="img">
+        <p id="message"></p>
+        <script>
+            document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            fetch("/check_login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ username, password })
+            })
+            .then(res => res.json())
+            .then(data => {
+                const message = document.getElementById("message");
+                message.innerText = data.message;
+
+                if (data.status === "success") {
+                    message.style.color = "green";
+
+                    // ✅ Redirect to dashboard on successful login
+                    setTimeout(() => {
+                        window.location.href = "/dashboard";
+                    }, 1000); // small delay to show success message
+                } else {
+                    message.style.color = "red";
+                    message.style.fontSize="22px";
+                    message.style.left="385px";
+                }
+            });
+        });
+        </script>
+    </body>
+</html>

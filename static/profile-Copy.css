@@ -1,0 +1,231 @@
+body{
+    background: linear-gradient(#101010,#032c42,#101010);
+    height: 800px;
+    width: 400px;
+    font-family:  Agency FB;
+}
+#back{
+    width: 928px;
+    height: 400px;
+    position: absolute;
+    left: 200px;
+}
+#logo{
+    position: fixed;
+    width: 131px;
+    height: 105px;
+    padding-left: 20px;
+}
+#div1{
+    height: 800px;
+    width: 180px;
+    background: linear-gradient(#101010,#032c42,#101010);
+    position: absolute;
+    color: #eeeeee;
+}
+#dash{
+    color: #eeeeee ;
+    position: fixed;
+    left: 60px;
+    top: 118px;
+}
+#dashimg{
+    position: fixed;
+    top:140px ;
+    left: 20px;
+    height: 25px;
+    width: 25px;
+}
+#blur{
+    position: fixed;
+    top: 280.5px;
+    left: 12px;
+    border-radius: 8px;
+    height: 43px;
+    width: 173px;
+    background-color:rgba(255, 255, 255, 0.209) ;
+}
+#trip{
+    color: #eeeeee;
+    position: fixed;
+    left: 60px;
+    top: 165px;
+}
+#tripimg{
+    position: fixed;
+    top: 190px;
+    left: 20px;
+    height: 25px;
+    width: 25px;
+}
+#per{
+    color: #eeeeee;
+    position: fixed;
+    left: 40px;
+    top: 217px;
+}
+#perimg{
+    position: fixed;
+    top:235px ;
+    left: 10px;
+    height: 30px;
+    width: 30px;
+}
+#grp{
+    color: #eeeeee;
+    position: fixed;
+    left: 55px;
+    top: 265px;
+}
+#grpimg{
+    position: fixed;
+    top:287px ;
+    left: 14px;
+    height: 25px;
+    width: 30px;
+}
+#lineT{
+    height: 830px;
+    width: 16px;
+    position: absolute;
+    left: 188px;
+    top: -10px;
+    background-color: #A19F9F;
+}
+#line1{
+    width: 176px;
+    height: 2px;
+    position: fixed;
+    left: 10px;
+    top: 125px;
+    border-radius: 1px;
+    background-color: #A19F9F;
+}
+#line2{
+    width: 176px;
+    height: 2px;
+    position: fixed;
+    left: 10px;
+    top: 175px;
+    border-radius: 1px;
+    background-color: #A19F9F;
+}
+#line3{
+    width: 176px;
+    height: 2px;
+    position: fixed;
+    left: 10px;
+    top: 225px;
+    border-radius: 1px;
+    background-color: #A19F9F;
+}
+#line4{
+    width: 176px;
+    height: 2px;
+    position: fixed;
+    left: 10px;
+    top: 275px;
+    border-radius: 1px;
+    background-color: #A19F9F;
+}
+#line5{
+    width: 176px;
+    height: 2px;
+    position: fixed;
+    left: 10px;
+    top: 325px;
+    border-radius: 1px;
+    background-color: #A19F9F;
+}
+#pop{
+    background-color: #101010;
+    border-radius: 8px;
+    height: 45px;
+    width: 90px;
+    position: absolute;
+    left: 221px;
+    top: 40px;
+}
+#pop::after ,#pop::before{
+    content: '';
+    position: absolute;
+    top: 22.3px;
+    left: 44.5px;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient( #ff4545, #00ff99, #006aff, #ff0095,#ff4545);
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 2px;
+    border-radius: 10px;
+}
+#pop::before{
+    filter: blur(1.5rem);
+    opacity: 1;
+}
+#head{
+    color: #eeeeee;
+    font-size: 32px;
+    padding: 8px;
+    position: absolute;
+    top: -37px;
+    text-decoration: underline;
+}
+#ab{
+    color: #eeeeee;
+    font-size: 25px;
+    position: absolute;
+    left: 720px;
+    top: -8px;
+    text-decoration: underline;
+}
+#lg{
+    color: #eeeeee;
+    font-size: 25px;
+    position: absolute;
+    left: 940px;
+    top: -8px;
+    text-decoration: underline;
+}
+#lgimg{
+    height: 20px;
+    width: 20px;
+    position:absolute;
+    left: 915px;
+    top: 25px;
+}
+#proimg{
+    position: absolute;
+    left: 530px;
+    top: 100px;
+    height: 200px;
+    width: 220[x];
+}
+#name{
+    position: absolute;
+    left: 250px;
+    top: 400px;
+    height: 100px;
+    width: 250px;
+}
+#pass{
+    position: absolute;
+    left: 550px;
+    top: 400px;
+    height: 100px;
+    width: 250px;
+}
+#email{
+    position: absolute;
+    left: 850px;
+    top: 400px;
+    height: 100px;
+    width: 250px;
+}
+#Cpass{
+    position: absolute;
+    left: 550px;
+    top: 550px;
+    height: 100px;
+    width: 250px;
+}

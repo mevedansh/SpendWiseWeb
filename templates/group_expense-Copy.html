@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='group_expense-Copy.css')}}">
+    </head>
+    <body>
+        <div id="back"></div>
+        <div id="lineT"></div>
+        <div id="div1">
+            <img src="{{url_for('static',filename='spendwise logo.png')}}" id="logo">
+            <a href="/dashboard"><h2 id="dash">Dashboard</h2><img src="{{url_for('static',filename='Vector.png')}}" id="dashimg"></a>
+            <a href="/create_trip"><h2 id="trip">Create Trip</h2><img src="{{url_for('static',filename='travel-icon 1.png')}}" id="tripimg"></a>
+            <a href="/personal_expense"><h2 id="per">Personal Expense</h2><img src="{{url_for('static',filename='Expense report 1.png')}}" id="perimg"></a>
+            <h2 id="grp">Group Expense</h2><img src="{{url_for('static',filename='travel-icon 1.png')}}" id="grpimg">
+        </div>
+        <div id="blur"></div>
+        <div id="line1"></div>
+        <div id="line2"></div>
+        <div id="line3"></div>
+        <div id="line4"></div>
+        <div id="line5"></div>
+        <a href="/profile"><img src="{{url_for('static',filename='profile.png')}}" id="proimg">
+        <h2 id="Uname">Amitesh Jadav</h2></a>
+        <a href="/login"><p id="lg">LogOut</p><img src="{{url_for('static',filename='logout.png')}}" id="lgimg"></a>
+        <a href="/about_spendwise"><p id="ab">About SpendWise</p></a>
+        <div id="pop"><p id="head">Group Expense</p></div>
+        <footer>
+            <img src="{{url_for('static',filename='spendwise logo.png')}}" id="footlogo">
+            <div class="footercontainer">
+                <div id="Us">
+                    <h2>Contact Us</h2>
+                        Email: spendwise2007@gamil.com<br><br>
+                        Phone Number: 9428182627<br><br>
+                        Support: Mon-Fri, 9AM - 6 pm
+                </div>
+                <div id="about">
+                    <h2>About SpendWise</h2>
+                        “SpendWise helps you track, manage,<br>
+                         and split expenses—effortlessly.”
+                </div>
+            </div>
+        </footer>
+      <main>
+      <div id="expenseWrap"></div>
+      <button id="saveBtn" onclick="saveExpenses()">Save Expenses</button>
+      </main>
+
+    <script>
+      const trip = JSON.parse(localStorage.getItem("tripFullInfo") || "{}");
+      if (!Array.isArray(trip.members) || trip.members.length === 0) {
+        document.getElementById("expenseWrap").innerHTML =
+          "<p style='font-size:22px;color:red;text-align:center'>No trip data found.<br>Go back to <strong>Create Trip</strong> and save it first.</p>";
+        document.getElementById("saveBtn").style.display = "none";
+        throw new Error("No members found – aborting group page");
+      }
+
+      const prev = JSON.parse(localStorage.getItem("groupExpenses") || "{}");
+      const prevMap = {};
+      if (Array.isArray(prev.members)) {
+        prev.members.forEach(m => prevMap[m.name] = Number(m.expense)||0);
+      }
+
+      const wrap = document.getElementById("expenseWrap");
+      trip.members.forEach((name,i)=>{
+        const row = document.createElement("div");
+        row.className = "memberRow";
+        row.innerHTML = `
+          <span>${name}</span>
+          ₹ <input type="number" value="${prevMap[name]||0}" data-name="${name}">
+        `;
+        wrap.appendChild(row);
+      });
+
+      function saveExpenses() {
+        const inputs  = document.querySelectorAll('#expenseWrap input');
+        const dataArr = Array.from(inputs).map(inp => ({
+          name   : inp.dataset.name,
+          expense: Number(inp.value)||0
+        }));
+
+        const expenseObj = { members: dataArr, savedAt: new Date().toISOString() };
+        localStorage.setItem("groupExpenses", JSON.stringify(expenseObj));
+
+        const blob = new Blob([JSON.stringify(expenseObj, null, 2)], { type:"application/json" });
+        const url  = URL.createObjectURL(blob);
+        const a    = document.createElement("a");
+        a.href = url;
+        a.download = "groupExpenses.json";
+        a.click();
+        URL.revokeObjectURL(url);
+
+        alert("Group expenses saved & downloaded!");
+        console.log("Group Expenses:", expenseObj);
+      }
+    </script>
+
+      <p id="hedline"><b>"Group spending made easy."</b></p>
+    </body>
+</html>

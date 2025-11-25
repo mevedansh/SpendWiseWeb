@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SpendWise</title>
+        <link rel="stylesheet" href="{{url_for('static',filename='Register_page-Copy.css')}}">
+    </head>
+    <body>
+        <img src="{{url_for('static',filename='spendwise logo.png')}}" id="logo">
+        <div id="div1">Registration</div><br>
+        <div id="div2">create your new account</div><br>
+        <form id="registerForm">
+        <div id="div3">
+            <h2 id="email">Email</h2><input type="email" id="username">
+            <h2 id="pass">Password</h2><input type="password" id="password">
+        </div>
+        <input type="submit" value="Register"  id="button">
+        <p id="message"></p>
+        </form>
+        <img src="https://img.freepik.com/premium-vector/man-sits-chair-with-
+        laptop-potted-plant_782516-43188.jpg?ga=GA1.1.2107759762.1744355349&
+        semt=ais_hybrid&w=740" id="img">
+
+       <script>
+            document.getElementById("registerForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            fetch("/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ username, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("message").innerText = data.message;
+
+                if (data.status === "success") {
+                    document.getElementById("message").style.color = "green";
+
+                    // ✅ Redirect to dashboard after successful registration
+                    setTimeout(() => {
+                        window.location.href = "/dashboard";
+                    }, 1000);
+                } else {
+                    document.getElementById("message");
+                }
+
+                document.getElementById("registerForm").reset();
+            });
+        });
+        </script>
+
+        </form>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='profile-Copy.css')}}">
+    </head>
+    <body>
+        <div id="back"></div>
+        <div id="lineT"></div>
+        <div id="div1">
+            <img src="{{url_for('static',filename='spendwise logo.png')}}" id="logo">
+            <a href="/dashboard"><h2 id="dash">Dashboard</h2><img src="{{url_for('static',filename='Vector.png')}}" id="dashimg"></a>
+            <a href="/create_trip"><h2 id="trip">Create Trip</h2><img src="{{url_for('static',filename='travel-icon 1.png')}}" id="tripimg"></a>
+            <a href="/personal_expense"><h2 id="per">Personal Expense</h2><img src="{{url_for('static',filename='Expense report 1.png')}}" id="perimg"></a>
+            <a href="/group_expense"><h2 id="grp">Group Expense</h2><img src="{{url_for('static',filename='travel-icon 1.png')}}" id="grpimg"></a>
+        </div>
+        <div id="line1"></div>
+        <div id="line2"></div>
+        <div id="line3"></div>
+        <div id="line4"></div>
+        <div id="line5"></div>
+        <a href="/profile"><img src="{{url_for('static',filename='profile.png')}}" id="proimg">
+        <h2 id="Uname">Amitesh Jadav</h2></a>
+        <a href="/login"><p id="lg">LogOut</p><img src="{{url_for('static',filename='logout.png')}}" id="lgimg"></a>
+        <a href="/about_spendwise"><p id="ab">About SpendWise</p></a>
+        <div id="pop"><p id="head">Profile</p></div>
+        <img src="{{url_for('static',filename='Uname.png')}}" id="name">
+        <img src="{{url_for('static',filename='Upass.png')}}" id="pass">
+        <img src="{{url_for('static',filename='Uemail.png')}}" id="email">
+        <img src="{{url_for('static',filename='Cpass.png')}}" id="Cpass">
+    </body>
+</html>
